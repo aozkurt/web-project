@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TrendPulse</title>
+    <style>
+        body {
+            height: 100vh;
+            background-color: rgb(19, 23, 36);
+        }
+
+        header {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            padding-top: 5px;
+            padding-bottom: 10px;
+            margin-bottom: 10px;
+        }
+
+        header span {
+            color: #f0ece5;
+            margin-left: 40px;
+            font-size: 30px;
+            text-decoration: none;
+        }
+
+        header>a {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+
+        header img {
+            background-color: rgb(19, 23, 36);
+            height: 40px;
+            width: 40px;
+            margin-right: 40px;
+        }
+
+        .container {
+            display: grid;
+            gap: 10px;
+            height: 100%;
+            width: 100%;
+            grid-template-columns: 6fr 5fr 5fr;
+            grid-template-rows: 4fr 1fr 2fr;
+        }
+
+        .upper-middle {
+            grid-area: 1 / 2 / 3 / 3;
+            border: 3px solid black;
+            border-radius: 10px;
+            border-right: none;
+        }
+
+        .child {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .upper-right {
+            grid-area: 1 / 3 / 3 / 4;
+            border: 3px solid black;
+            border-radius: 10px;
+            border-left: none;
+        }
+
+        .bottom-right {
+            grid-area: 3 / 2 / 4 / 4;
+            border: 3px solid black;
+            border-radius: 10px;
+        }
+
+        .upper-middle-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100%;
+            width: 100%;
+        }
+
+        .upper-left {
+            display: flex;
+            justify-content: flex-start;
+            border: 3px solid black;
+            border-radius: 10px;
+        }
+
+        .bottom-left {
+            grid-area: 2 / 1 / 4 / 2;
+        }
+
+        .news-container {
+            margin: 5px;
+            padding: 5px;
+            height: 100%;
+            width: 100%;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 12px;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .title {
+            width: 100%;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 20px;
+            color: #f0ece5;
+            text-align: center;
+        }
+
+        .news-list-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 90%;
+            height: 100%;
+        }
+
+        .news-list {
+            height: 400px;
+            overflow-y: auto;
+            white-space: normal;
+            word-wrap: break-word;
+            margin: 0px;
+            padding: 0px;
+            text-align: left;
+            color: #f0ece5;
+        }
+
+        .list-item {
+            margin-bottom: 30px;
+            padding: 5px;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 15px;
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f0ece5;
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #02162c;
+            border-radius: 10px;
+            border: 2px solid #f0ece5;/
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+
+        .graph-container {
+            height: 100%;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .graph {
+            height: 90%;
+            width: 90%;
+            border: 3px solid black;
+        }
+
+        .toggle-container {
+            margin: 20px;
+        }
+
+        .toggle-button {
+            padding: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #f0ece5;
+            color: black;
+            border: 1px;
+            border-radius: 5px;
+
+        }
+
+        .toggle-button:hover {
+            background-color: #d3d3d3;
+        }
+
+        .hover-container {
+            position: relative;
+            display: inline-block;
+        }
+
+        .button-list {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            padding: 0;
+            list-style-type: none;
+            border-radius: 2px;
+            background-color: #f0ece5;
+            visibility: hidden;
+        }
+
+        .hover-container:hover .button-list {
+            display: block;
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .list-button {
+            padding: 10px 20px;
+            font-size: 14px;
+            margin: 0px 0;
+            cursor: pointer;
+            background-color: #f0ece5;
+            color: black;
+            border: 1px solid transparent;
+            border-radius: 2px;
+            width: 100%;
+        }
+
+        .list-button:hover {
+            background-color: #dfdcd7;
+        }
+
+        .symbol-info {
+            color: #f0ece5;
+        }
+
+        .upmid-container-upper {
+            margin-bottom: 50px;
+        }
+
+        .upmid-container-bottom {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .upmid-container-bottom>label {
+            color: #f0ece5;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        #current-price-label {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        #current-price-tag {
+            font-size: 40px;
+            padding: 10px;
+            border: 1px solid #f0ece5;
+            border-radius: 5px;
+        }
+
+        .funding-rates-container {
+            padding: 10px;
+            padding-top: 20px;
+            margin-top: 10px;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-around;
+        }
+
+        .funding-rates {
+            font-family: Arial, Helvetica, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px;
+            height: 200px;
+        }
+
+        .funding-rates-label-container {
+            color: #f0ece5;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 20px;
+            margin-bottom: 10px;
+            padding: 10px;
+            padding-right: 40px;
+        }
+
+        .funding {
+            color: #f0ece5;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .funding-rates-symbol-container {
+            display: flex;
+            justify-content: space-between;
+            border-radius: 5px;
+        }
+
+        .funding-rates-rates {
+            font-family: Arial, Helvetica, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px;
+            height: 200px;
+            margin-left: 120px;
+        }
+
+        .funding-rate {
+            color: rgb(2, 207, 2);
+        }
+
+        .red-funding {
+            color: rgb(206, 0, 0);
+        }
+
+        .upper-right-upper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .trade-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 60%;
+        }
+
+        .trade-container>label {
+            color: #f0ece5;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        .trade-container>input {
+            margin-bottom: 20px;
+            height: 20px;
+            width: 200px;
+            text-align: left;
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: space-around;
+            width: 100%;
+            margin-top: 30px;
+        }
+
+        .trade-button {
+            height: 50px;
+            width: 100px;
+            border: 1px solid black;
+            border-radius: 5px;
+            color: #f0ece5;
+        }
+
+        .buy-button {
+            background-color: rgb(0, 184, 0);
+        }
+
+        .sell-button {
+            background-color: rgb(206, 0, 0);
+        }
+
+        .buy-button:hover {
+            background-color: rgb(0, 151, 0);
+        }
+
+        .sell-button:hover {
+            background-color: rgb(172, 0, 0);
+        }
+
+        .risk-management {
+            margin-top: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            width: 75%;
+            color: #f0ece5;
+        }
+
+        .risk-management label {
+            margin-bottom: 15px;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 15px;
+        }
+
+        .risk-management-label {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: center;
+        }
+
+        .risk-management-number {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            justify-content: center;
+        }
+
+        .loss {
+            color: rgb(206, 0, 0);
+        }
+
+        .profit {
+            color: rgb(2, 207, 2);
+        }
+
+        .bottom-right-container {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: center;
+            width: 100%;
+            margin-top: 0px;
+            padding-top: 0px;
+        }
+
+        .transaction-list-container {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            color: #f0ece5;
+        }
+
+        .transaction-list-element {
+            width: 90%;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .list-title{
+            border-bottom: 1px solid #f0ece5;
+            padding-bottom: 10px;
+        }
+
+        .buy {
+            color: rgb(2, 207, 2);
+        }
+
+        .sell {
+            color: rgb(206, 0, 0);
+        }
+
+        @media(max-width: 1250px) {
+            .container {
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+                height: 100%;
+                width: 100%;
+                grid-template-columns: 6fr 5fr 5fr;
+                grid-template-rows: 4fr 1fr 2fr;
+            }
+
+            .graph {
+                height: 300px;
+                width: 100%;
+                border: 3px solid black;
+            }
+
+            .upper-right {
+            grid-area: 1 / 3 / 3 / 4;
+            border: 3px solid black;
+            border-radius: 10px;
+        }
+
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header">
+        <a href="/Proje/index.html">
+            <span>TrendPulse</span>
+        </a>
+        <a href="./Wallet.html">
+            <img src="./Icons/wallet.png" alt="wallet" />
+        </a>
+    </header>
+    <div class="container">
+        <div class="upper-left child">
+            <div class="news-container">
+                <div class="news-title title">
+                    <h2>News</h2>
+                </div>
+                <div class="news-list-container">
+                    <ul class="news-list">
+                        <li class="list-item">
+                            Lorem ipsum odor amet, consectetuer adipiscing elit. Erat nullam
+                            ac pharetra inceptos convallis habitant. Volutpat malesuada nisi
+                        </li>
+                        <li class="list-item">
+                            Sapien primis consectetur, ad ad lorem maecenas diam. Accumsan
+
+                        </li>
+                        <li class="list-item">
+                            Ipsum nascetur tortor nullam sapien hendrerit mollis aptent erat
+                            lacinia.
+                        </li>
+                        <li class="list-item">
+                            Lorem ipsum odor amet, consectetuer adipiscing elit. Dignissim
+                            rutrum suscipit at varius metus.
+                        </li>
+                        <li class="list-item">
+                            Pulvinar augue sagittis lobortis hendrerit congue nostra enim
+                            lacus.
+                        </li>
+                        <li class="list-item">
+                            Cubilia nam facilisis dignissim; pretium rhoncus tortor. Nisi
+                            justo integer purus at orci dictum sodales.
+                        </li>
+                        <li class="list-item">
+                            Ipsum nascetur tortor nullam sapien hendrerit mollis aptent erat
+                            lacinia.
+                        </li>
+                        <li class="list-item">
+                            Ipsum nascetur tortor nullam sapien hendrerit mollis aptent erat
+                            lacinia.
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="upper-middle child">
+            <div class="upper-middle-container">
+                <div class="upmid-container-upper">
+                    <div class="title-middle title">
+                        <h2>Symbol</h2>
+                    </div>
+                    <div class="toggle-container">
+                        <div class="hover-container">
+                            <button class="toggle-button">Select a Symbol</button>
+                            <div class="button-list">
+                                <button class="list-button">BTC/USDT</button>
+                                <button class="list-button">ETH/USDT</button>
+                                <button class="list-button">XRP/USDT</button>
+                                <button class="list-button">SOL/USDT</button>
+                                <button class="list-button">LTC/USDT</button>
+                            </div>
+                            <div class="symbol-info">
+                                <label for="symbol-price">
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="upmid-container-bottom">
+                    <label id="current-price-label" for="symbol-price">Current Price:</label>
+                    <label id="current-price-tag" for="symbol-price">$100.000</label>
+                    <div class="funding-rates-container">
+                        <div class="funding-rates-label-container">
+                            <label for="funding-rates">Funding Rates:</label>
+                        </div>
+                        <div class="funding-rates-symbol-container">
+                            <div class="funding-rates">
+                                <div class="funding-btc funding">BTC:</div>
+                                <div class="funding-eth funding">ETH:</div>
+                                <div class="funding-xrp funding">XRP:</div>
+                                <div class="funding-xrp funding">SOL:</div>
+                                <div class="funding-ltc funding">LTC:</div>
+                            </div>
+                            <div class="funding-rates-rates">
+                                <div class="funding-btc funding funding-rate">0.0085</div>
+                                <div class="funding-eth funding funding-rate">0.0022</div>
+                                <div class="funding-xrp funding funding-rate">0.0084</div>
+                                <div class="funding-ltc funding funding-rate red-funding">-0.0079</div>
+                                <div class="funding-ltc funding funding-rate">0.0100</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="upper-right child">
+            <div class="upper-right-upper">
+                <div class="trade-title title">
+                    <h2>Trade</h2>
+                </div>
+                <div class="trade-container">
+                    <label for="price">Size:</label>
+                    <input class="trade-price" type="text" name="price" id="trade-price" placeholder="USDT">
+                    <label for="price">Price:</label>
+                    <input class="trade-price" type="text" name="price" id="trade-price" placeholder="USDT">
+                    <label for="price">Take Profit:</label>
+                    <input class="trade-price" type="text" name="price" id="take-profit" placeholder="USDT">
+                    <label for="price">Stop Loss:</label>
+                    <input class="trade-price" type="text" name="price" id="stop-loss" placeholder="USDT">
+                    <div class="button-container">
+                        <button class="buy-button trade-button">Buy</button>
+                        <button class="sell-button trade-button">Sell</button>
+                    </div>
+                    <div class="risk-management">
+                        <div class="risk-management-label">
+                            <label for="potential-loss">Potential Loss:</label>
+                            <label for="potential-loss-per">Loss Percentage:</label>
+                            <label for="potential-profit">Potential Profit:</label>
+                            <label for="potential-profit-per">Profit Percentage:</label>
+                        </div>
+                        <div class="risk-management-number">
+                            <label class="loss" for="loss">0.00</label>
+                            <label class="loss" for="loss-per">0.00%</label>
+                            <label class="profit" for="profit">0.00</label>
+                            <label class="profit" for="profit-per">0.00%</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="bottom-left child">
+            <div class="graph-container">
+                <div class="graph"></div>
+            </div>
+        </div>
+        <div class="bottom-right child">
+            <div class="bottom-right-container">
+                <div class="transaction-title title">
+                    <h2>Transactions</h2>
+                </div>
+                <div class="transaction-list-container">
+                    <div class="transaction-list-element title list-title">
+                        <div class="Date">Date</div>
+                        <div class="Hour">Hour</div>
+                        <div class="Type">Type</div>
+                        <div class="Size">Size</div>
+                    </div>
+                    <div class="transaction-list-element">
+                        <div class="Date">23/12/2024</div>
+                        <div class="Hour">17.00</div>
+                        <div class="Type buy">BUY</div>
+                        <div class="Size">100<span class="usdt">USDT</span></div>
+                    </div>
+                    <div class="transaction-list-element">
+                        <div class="Date">24.12.2024</div>
+                        <div class="Hour">14.00</div>
+                        <div class="Type sell">SELL</div>
+                        <div class="Size">100<span class="usdt">USDT</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</body>
+
+</html>

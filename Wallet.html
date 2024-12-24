@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TrendPulse</title>
+    <style>
+        body {
+            height: 100vh;
+            background-color: rgb(19, 23, 36);
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            padding-top: 5px;
+            padding-bottom: 10px;
+            margin-bottom: 10px;
+        }
+
+        header span {
+            color: #f0ece5;
+            margin-left: 40px;
+            font-size: 30px;
+            text-decoration: none;
+        }
+
+        header>a {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+
+        header img {
+            background-color: rgb(19, 23, 36);
+            height: 30px;
+            width: 20px;
+            margin-right: 50px;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            width: 100%;
+        }
+
+        .wallet {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            flex-direction: column;
+            height: 100%;
+            width: 80%;
+        }
+
+        .title {
+            width: 100%;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 20px;
+            color: #f0ece5;
+            text-align: center;
+        }
+
+        .assets {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            width: 100%;
+        }
+
+        h2 {
+            margin-bottom: 40px;
+        }
+
+        h3 {
+            margin-bottom: 40px;
+        }
+
+        .asset-value-title {
+            display: flex;
+            justify-content: space-around;
+            width: 100%;
+            margin-bottom: 20px;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .asset-value {
+            display: flex;
+            justify-content: space-around;
+            width: 100%;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #f0ece5;
+        }
+
+        .asset-value>div {
+            font-size: 30px;
+        }
+
+        .font {
+            color: #f0ece5;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 20px;
+        }
+
+        .other-assets-list {
+            width: 70%;
+            height: 100%;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+        }
+
+        .other-assets-title {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            margin-top: 50px;
+            border-bottom: solid 1px #f0ece5;
+            padding-bottom: 20px;
+            padding-left: 50px;
+            padding-right: 50px;
+        }
+
+        .other-assets-title-value {
+            display: flex;
+            justify-content: space-around;
+            width: 30%;
+            padding-right: 30px;
+        }
+
+        .other-assets-list-item {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            margin-top: 25px;
+            padding-bottom: 10px;
+            
+            padding-right: 50px;
+        }
+
+        .other-assets-list-item-values {
+            display: flex;
+            justify-content: space-around;
+            width: 30%;
+        }
+
+        .icon-asset-name{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        footer {
+            height: 50px;
+            width: 100%;
+            color: #f0ece5;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid #f0ece5;
+            margin-top: 40px;
+        }
+
+        footer span {
+            margin-left: 40px;
+        }
+
+        .icons-media {
+            margin-right: 40px;
+        }
+
+        .icons-media img {
+            height: 40px;
+            width: 40px;
+        }
+
+        .icon-crypto {
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 10px;
+        }
+
+        .icon-crypto img {
+            width: 30px;
+            height: 30px;
+        }
+
+        @media (max-width: 900px) {
+            .other-assets-list-item-values {
+                width: 60%;
+            }
+
+            .other-assets-title-value {
+                width: 60%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header">
+        <a href="/Proje/index.html">
+            <span>TrendPulse</span>
+        </a>
+        <a href="./Main.html">
+            <img src="./Icons/back.jpg" alt="wallet" />
+        </a>
+    </header>
+    <div class="container">
+        <div class="wallet">
+            <div class="title">
+                <h2>Wallet</h2>
+                <h3>Assets:</h3>
+            </div>
+            <div class="assets">
+                <div class="asset-value-title">
+                    <div class="btc-value font">BTC VALUE:</div>
+                    <div class="usdt-value font">USDT VALUE:</div>
+                </div>
+                <div class="asset-value">
+                    <div class="btc-value font">0.00</div>
+                    <div class="usdt-value font">0.00<span class="usdt">$</span></div>
+                </div>
+            </div>
+            <div class="other-assets-list">
+                <div class="other-assets-title title">
+                    <div class="">Asset</div>
+                    <div class="other-assets-title-value title">
+                        <div class="amount font">Amount</div>
+                        <div class="value font">Value</div>
+                    </div>
+                </div>
+                <div class="other-assets-list-item font">
+                    <div class="icon-asset-name">
+                        <div>
+                            <div class="icon-crypto">
+                                <img src="./Icons/tether.png" alt="tether" />
+                            </div>
+                        </div>
+                        <div>USDT</div>
+                    </div>
+                    <div class="other-assets-list-item-values">
+                        <div class="amount font">0.00</div>
+                        <div class="value font">0.00<span class="usdt">$</span></div>
+                    </div>
+                </div>
+                <div class="other-assets-list-item font">
+                    <div class="icon-asset-name">
+                        <div>
+                            <div class="icon-crypto">
+                                <img src="./Icons/btc.png" alt="Bitcoin" />
+                            </div>
+                        </div>
+                        <div>BTC</div>
+                    </div>
+                    <div class="other-assets-list-item-values">
+                        <div class="amount font">0.00</div>
+                        <div class="value font">0.00<span class="usdt">$</span></div>
+                    </div>
+                </div>
+                <div class="other-assets-list-item font">
+                    <div class="icon-asset-name">
+                        <div>
+                            <div class="icon-crypto">
+                                <img src="./Icons/eth.png" alt="ethereum" />
+                            </div>
+                        </div>
+                        <div>ETH</div>
+                    </div>
+                    <div class="other-assets-list-item-values">
+                        <div class="amount font">0.00</div>
+                        <div class="value font">0.00<span class="usdt">$</span></div>
+                    </div>
+                </div>
+                <div class="other-assets-list-item font">
+                    <div class="icon-asset-name">
+                        <div>
+                            <div class="icon-crypto">
+                                <img src="./Icons/sol.png" alt="solana" />
+                            </div>
+                        </div>
+                        <div>SOL</div>
+                    </div>
+                    <div class="other-assets-list-item-values">
+                        <div class="amount font">0.00</div>
+                        <div class="value font">0.00<span class="usdt">$</span></div>
+                    </div>
+                </div>
+                <div class="other-assets-list-item font">
+                    <div class="icon-asset-name">
+                        <div>
+                            <div class="icon-crypto">
+                                <img src="./Icons/ltc.webp" alt="litecoin" />
+                            </div>
+                        </div>
+                        <div>LTC</div>
+                    </div>
+                    <div class="other-assets-list-item-values">
+                        <div class="amount font">0.00</div>
+                        <div class="value font">0.00<span class="usdt">$</span></div>
+                    </div>
+                </div>
+                <div class="other-assets-list-item font">
+                    <div class="icon-asset-name">
+                        <div>
+                            <div class="icon-crypto">
+                                <img src="./Icons/xrp.png" alt="ripple" />
+                            </div>
+                        </div>
+                        <div>XRP</div>
+                    </div>
+                    <div class="other-assets-list-item-values">
+                        <div class="amount font">0.00</div>
+                        <div class="value font">0.00<span class="usdt">$</span></div>
+                    </div>
+                </div>
+                <div class="other-assets-list-item font">
+                    <div class="icon-asset-name">
+                        <div>
+                            <div class="icon-crypto">
+                                <img src="./Icons/bnb.png" alt="bnb" />
+                            </div>
+                        </div>
+                        <div>BNB</div>
+                    </div>
+                    <div class="other-assets-list-item-values">
+                        <div class="amount font">0.00</div>
+                        <div class="value font">0.00<span class="usdt">$</span></div>
+                    </div>
+                </div>
+                <div class="other-assets-list-item font">
+                    <div class="icon-asset-name">
+                        <div>
+                            <div class="icon-crypto">
+                                <img src="./Icons/avax.png" alt="avax" />
+                            </div>
+                        </div>
+                        <div>AVAX</div>
+                    </div>
+                    <div class="other-assets-list-item-values">
+                        <div class="amount font">0.00</div>
+                        <div class="value font">0.00<span class="usdt">$</span></div>
+                    </div>
+                </div>
+                <div class="other-assets-list-item font">
+                    <div class="icon-asset-name">
+                        <div>
+                            <div class="icon-crypto">
+                                <img src="./Icons/ada.webp" alt="ada" />
+                            </div>
+                        </div>
+                        <div>ADA</div>
+                    </div>
+                    <div class="other-assets-list-item-values">
+                        <div class="amount font">0.00</div>
+                        <div class="value font">0.00<span class="usdt">$</span></div>
+                    </div>
+                </div>
+                <div class="other-assets-list-item font">
+                    <div class="icon-asset-name">
+                        <div>
+                            <div class="icon-crypto">
+                                <img src="./Icons/sui.png" alt="sui" />
+                            </div>
+                        </div>
+                        <div>SUI</div>
+                    </div>
+                    <div class="other-assets-list-item-values">
+                        <div class="amount font">0.00</div>
+                        <div class="value font">0.00<span class="usdt">$</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="footer">
+        <span>© 2024 TrendPulse, Inc</span>
+        <div class="icons-media">
+            <img src="./Icons/insta2.png" alt="Insta" />
+            <img src="./Icons/twitter.png" alt="Twitter" />
+        </div>
+    </footer>
+</body>
+
+</html>

@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>TrendPulse</title>
+  <style>
+    body {
+      background-image: url("./bgs/1.png");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      height: 100vh;
+      background-color: rgb(19, 21, 26);
+    }
+
+    header {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      padding-top: 15px;
+      padding-bottom: 15px;
+      margin-bottom: 20px;
+    }
+
+    header span {
+      color: #f0ece5;
+      margin-left: 40px;
+      font-size: 30px;
+      text-decoration: none;
+    }
+
+    header>a {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+      text-decoration: none;
+    }
+
+    .header-buttons {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 15px;
+      margin-right: 40px;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 15px;
+      cursor: pointer;
+    }
+
+    .login {
+      height: 50px;
+      width: 100px;
+      border-radius: 15px;
+      background-color: transparent;
+      border: 2px solid #f0ece5;
+      color: #f0ece5;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .signup {
+      height: 50px;
+      width: 100px;
+      border-radius: 15px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      border: 2px solid #f0ece5;
+    }
+
+    .signup:hover {
+      background-color: #bebebe;
+      border: solid #bebebe;
+    }
+
+    .login:hover {
+      background-color: #f0ece5;
+      color: black
+    }
+
+    .container {
+      padding-right: 0.75rem;
+      padding-left: 0.75rem;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+
+    .base {
+      display: flex;
+      justify-content: start;
+      margin-bottom: 220px;
+    }
+
+    .motto {
+      color: #f0ece5;
+      font-family: Arial, Helvetica, sans-serif;
+      margin-left: 200px;
+      margin-top: 120px;
+      font-size: 90px;
+    }
+
+    .motto>p {
+      margin-bottom: 0px;
+      margin-top: 0px;
+    }
+
+    .bigger {
+      font-size: 100px;
+    }
+
+    .longer {
+      margin-left: 140px;
+    }
+
+    .prices {
+      margin: 25px;
+      display: flex;
+      justify-content: center;
+      gap: 70px;
+      margin-bottom: 300px;
+    }
+
+    .section {
+      background-color: #f0ece5;
+      height: 50px;
+      width: 200px;
+      border: #f0ece5 3px;
+      border-radius: 50px;
+      padding: 20px;
+
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      gap: 25px;
+    }
+
+    .icon-crypto {
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .icon-crypto img {
+      width: 40px;
+      height: 40px;
+    }
+
+    .price {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 30px;
+      font-style: bold;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .price>p {
+      margin: 0px;
+      padding: 0px;
+    }
+
+    .features {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 60px;
+      margin-bottom: 100px;
+    }
+
+    .feature {
+      background-color: rgb(19, 21, 26);
+      color: #f0ece5;
+      height: 300px;
+      width: 500px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+      gap: 10px;
+      text-align: center;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .icon-feature {
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0px;
+    }
+
+    .icon-feature img {
+      height: 40px;
+      width: 40px;
+    }
+
+    .feature h3 {
+      margin: 10px 0;
+    }
+
+    .feature p {
+      margin: 0;
+      padding: 10px;
+      font-size: 16px;
+    }
+
+    footer {
+      height: 50px;
+      width: 100%;
+      color: #f0ece5;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid #f0ece5;
+    }
+
+    footer span {
+      margin-left: 40px;
+    }
+
+    .icons-media {
+      margin-right: 40px;
+    }
+
+    .icons-media img {
+      height: 40px;
+      width: 40px;
+    }
+
+    @media (max-width: 1000px) {
+      .prices {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+      }
+
+      .base {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 100px;
+      }
+
+      .motto {
+        color: #f0ece5;
+        font-family: Arial, Helvetica, sans-serif;
+        margin-left: 80px;
+        margin-top: 120px;
+        font-size: 50px;
+      }
+
+      .motto>p {
+        margin-bottom: 0px;
+        margin-top: 0px;
+      }
+
+      .bigger {
+        font-size: 60px;
+      }
+
+      .longer {
+        margin-left: 70px;
+      }
+
+      .features {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 50px;
+      }
+
+    }
+  </style>
+</head>
+
+<body>
+  <header class="header">
+    <a href="/Proje/index.html">
+      <span>TrendPulse</span>
+    </a>
+
+    <div class="header-buttons">
+      <a href="./Login.html">
+        <button type="button" class="login">
+          Login
+        </button>
+      </a>
+      <a href="./Signup.html">
+        <button type="button" class="signup">
+          Sign-up
+        </button>
+      </a>
+    </div>
+  </header>
+
+  <div class="container">
+    <div class="base">
+      <div class="motto">
+        <p>Turn <span class="bigger">News</span></p>
+        <p class="longer">into <span class="bigger">Profits</span></p>
+      </div>
+    </div>
+
+    <div class="prices">
+      <div class="section">
+        <div class="icon-crypto">
+          <img src="./Icons/btc.png" alt="Bitcoin" />
+        </div>
+        <div class="price">
+          <p></p>
+        </div>
+      </div>
+      <div class="section">
+        <div class="icon-crypto">
+          <img src="./Icons/eth.png" alt="Ethereum" />
+        </div>
+        <div class="price">
+          <p></p>
+        </div>
+      </div>
+      <div class="section">
+        <div class="icon-crypto">
+          <img src="./Icons/sol.png" alt="Solana" />
+        </div>
+        <div class="price">
+          <p></p>
+        </div>
+      </div>
+      <div class="section">
+        <div class="icon-crypto">
+          <img src="./Icons/ltc.webp" alt="Litecoin" />
+        </div>
+        <div class="price">
+          <p></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="features">
+      <div class="feature">
+        <div class="icon-feature">
+          <img src="./Icons/security.png" alt="Litecoin" />
+        </div>
+        <h3>Secure</h3>
+        <p>
+          Your data and privacy are our top priority. We use advanced
+          encryption and security protocols to ensure your safety.
+        </p>
+      </div>
+      <div class="feature">
+        <div class="icon-feature">
+          <img src="./Icons/handshake.png" alt="Litecoin" />
+        </div>
+        <h3>Reliable</h3>
+        <p>
+          We build trust through transparency and consistent, reliable service
+          for our users.
+        </p>
+      </div>
+      <div class="feature">
+        <div class="icon-feature">
+          <img src="./Icons/wellbeing.png" alt="Litecoin" />
+        </div>
+        <h3>Caring</h3>
+        <p>
+          We genuinely care about your well-being and are committed to
+          providing exceptional support and service.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <span>© 2024 TrendPulse, Inc</span>
+    <div class="icons-media">
+      <img src="./Icons/insta2.png" alt="Insta" />
+      <img src="./Icons/twitter.png" alt="Twitter" />
+    </div>
+  </footer>
+</body>
+
+</html>
